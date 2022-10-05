@@ -10,7 +10,7 @@ import logger from "morgan";
 import session from "express-session";
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { Secret } from './config/config.js';
+
 
 
 // Declaring constants
@@ -26,17 +26,17 @@ import flash from 'connect-flash';
 let localStrategy = passportLocal.Strategy;
 
 // Auth Step 3 - import the user model
-import User from './models/user.js';
+import Login from './app/models/logins.js';
 
 // Import Mongoose Module
 import mongoose from 'mongoose';
 
 // Configuration Module
-import { MongoURI, Secret } from '../config/config.js';
+import { MongoURI, Secret } from './config/config.js';
 
-import indexRouter from './routes/index.route.server.js'
-import movieRouter from './routes/movies.route.server.js';
-import authRouter from './routes/auth.route.server.js';
+import indexRouter from './app/routes/index.route.server.js'
+import listRouter from './app/routes/list.route.server.js';
+import authRouter from './app/routes/auth.route.server.js';
 
 const app = express();
 
@@ -66,14 +66,16 @@ app.use(flash());
 // Auth Step 6 - Initialize Passport and Session
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(User.createStrategy());
+passport.use(Login.createStrategy());
 
 // Auth Step 8 - Setup serialization and deserialization
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.serializeUser(Login.serializeUser());
+passport.deserializeUser(Login.deserializeUser());
 
 //Using the router that was exported from index.route.server.js
 app.use('/', indexRouter);
+app.use('/', listRouter);
+app.use('/', authRouter);
 
 // Declaring the constants for the appropriate port to be used
 const port = 3000;

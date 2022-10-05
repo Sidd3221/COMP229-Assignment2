@@ -7,7 +7,8 @@ const LoginSchema = new Schema({
     username: String, 
     phone: Number, 
     password: String,
-    email: String
+    email: String,
+    displayName: String
 }, {
     timestamps: true,
     collection: 'users'

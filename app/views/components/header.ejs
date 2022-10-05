@@ -10,4 +10,10 @@ Date: Sep 19, 2022 -->
     <a href="/projects">My projects</a>
     <a href="/services">Services</a>
     <a href="/contact">Contact Me</a>
+    <% if(displayName) { %>
+        <a href="/logout"> Logout</a>
+       
+        <% } else { %>
+         <a href="/login">Login</a>
+        <% } %>
 </div>
