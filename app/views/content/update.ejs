@@ -1,0 +1,29 @@
+<div id="updateDiv">
+    <form id="updateForm" method="POST">
+        <label>First Name:</label>
+        <input class="form-control" type="text" name="firstName" id="firstName" placeholder="First Name" required>
+        <label>Last Name:</label>
+        <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Last Name" required>
+
+
+
+        <label>Email:</label>
+        <input type="email" class="form-control" id="emailAddress" name="email" required value="" placeholder="Email">
+
+        <label>Phone Number:</label>
+        <input type="text" class="form-control" id="username" name="phone" required value="" placeholder="Username">
+
+        <label>Username:</label>
+        <input type="text" class="form-control" id="username" name="username" required value="" placeholder="Username">
+
+
+        <button class="btn btn-primary" type="submit">
+            <i class="fas fa-edit"></i> Submit</button>
+
+        <a href="/delete" class="btn btn-warning">
+            <i class="fas fa-undo"></i> Delete user</a>
+
+        <a href="/list" class="btn btn-warning">
+            <i class="fas fa-undo"></i> Cancel update</a>
+    </form>
+</div>

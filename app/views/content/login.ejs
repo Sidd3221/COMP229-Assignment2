@@ -1,0 +1,18 @@
+<div id="loginDiv">
+    <% if(messages.length > 0) { %>
+    <div id="messageArea" class="alert alert-danger">
+        <%= messages %>
+    </div>
+    <% } %>
+    <form id="loginForm" method="POST" novalidate>
+        <label id="firstNameLabel">Username:</label>
+        <input id="usernameInput" type="text" maxlength="20" name="username">
+        <br><br>
+        <label id="lastNameLabel">Password:</label>
+        <input id="passwordInput" type="text" maxlength="20" name="password">
+
+        <button class="btn btn-primary" type="submit">
+            <i class="fas fa-edit"></i> Submit</button>
+    </form>
+    <p>Not registered? Click here: <a href="/register">Register</a></p>
+</div>
