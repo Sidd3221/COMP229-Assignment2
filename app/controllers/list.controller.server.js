@@ -2,8 +2,24 @@ import loginModel from '../models/logins.js';
 
 import { UserDisplayName } from '../utils/index.js';
 
+import express from 'express';
+
+// need passport 
+import passport from 'passport';
+
+// need to include the User Model for authentication
+import Login from '../models/logins.js';
+
+// import DisplayName Utility method
+
+
 
 export function displayBusinessContactsList(req, res, next){
+    if(!req.user){
+        console.log('user not logged in');
+        return res.render('template', {title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: UserDisplayName(req) });
+    }
+    
     loginModel.find(function(err, logins) {
         if(err){
             console.error(err);
