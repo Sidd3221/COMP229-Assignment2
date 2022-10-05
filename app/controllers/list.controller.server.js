@@ -37,6 +37,14 @@ export function displayBusinessContactsList(req, res, next){
 
 export function displayUpdatePage(req, res, next) {
     let id = req.params.id;
+    loginModel.find(function(err, logins) {
+        if(err){
+            console.error(err);
+            res.end(err);
+        }
+
+        console.log(logins);
+    })
 
     loginModel.findById(id, (err, login) => {
         if(err){
