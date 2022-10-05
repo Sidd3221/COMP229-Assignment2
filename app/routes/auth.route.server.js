@@ -11,6 +11,7 @@ const router = Router();
 router.get('/login', DisplayLoginPage);
 // Process Login Page
 router.post('/login', ProcessLoginPage);
+router.post('/list',ProcessLoginPage);
 
 // Display Registration Page
 router.get('/register', DisplayRegisterPage);
