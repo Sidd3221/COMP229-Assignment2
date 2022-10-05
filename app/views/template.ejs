@@ -1,0 +1,39 @@
+<!-- Filename: server.js
+Student Name: Siddharth Verma
+Student ID: 301207026
+Date: Sep 19, 2022 -->
+
+<!-- This is the main HTML template that will format all website pages as HTML and enable the browser to display all pages -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- EJS variable to allow for dynamic loading of page title depending on which website page is open.  -->
+    <title>
+        <%= title%>
+    </title>
+    <!-- Bootstrap scripts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Fonts script -->
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;700&display=swap" rel="stylesheet">
+    <!-- My CSS -->
+    <link rel="stylesheet" href="./content/css/styles.css">
+</head>
+
+<body>
+    <!-- Loading header.ejs  -->
+    <%- include('components/header'); %>
+
+    <!-- EJS variable to allow for dynamic page loading -->
+    <%- include(`content/${page}`); %>
+    <br><br>
+    <footer>
+        <!-- Loading footer.ejs -->
+        <%- include('components/footer'); %>
+    </footer>
+</body>
+</html>

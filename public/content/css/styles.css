@@ -1,0 +1,152 @@
+/* Filename: styles.css
+Student Name: Siddharth Verma
+Student ID: 301207026
+Date: Sep 19, 2022 */
+
+
+body {
+    background-color: #BCFFB9;
+}
+
+/* Styling all div elements */
+#mainIntro,
+#mainContactDiv,
+#mainServices,
+#projectsDiv,
+#aboutMeDiv, #mission {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #F5FDB0;
+    padding: 20px;
+    text-align: center;
+    margin-top: 3%;
+    border-radius: 20px;
+}
+
+/* Styles for the Home page */
+.btn-outline-info:hover {
+    background-color: #68D4B1 !important;
+}
+
+#navigationBar {
+    text-align: right;
+    background-color: #68D4B1;
+    height: 120px;
+    padding: 10px;
+}
+
+#welcome{
+    text-align: center;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+#navigationBar a {
+    padding: 15px;
+    color: white;
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+#navigationBar a:hover {
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+#logo {
+    float: left;
+    height: 100px;
+    width: 200px;
+}
+
+/* Styling for my photo on the about page */
+#myPhoto {
+    height: 200px;
+    width: 200px;
+}
+
+/* Styling for the photos and text on services page */
+#cImage{
+    height:128px;
+    width:128px;
+}
+
+#webImage{
+    height: 150px;
+    width: 250px;
+}
+
+#uiDesign{
+    height:200px;
+}
+
+#sql{
+    height: 200px;
+    margin-left: 8%;
+}
+
+#mainServices p{
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+#mainServices div{
+    border: 2px dashed;
+    border-color: #68D4B1;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+#mainServices li {
+    text-align: left;
+    margin-left: 260px;
+}
+
+/* Styling all headings, titles, labels and paragraphs*/
+#bvTitle,
+#realEstateTitle,
+#reminderTitle,
+#missionStatementTitle,
+#welcomeTitle,
+h1,#emailSpan,
+#phoneSpan,
+label {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#bvProjectText,
+#realEstateProjectText,
+#reminderText,
+#aboutMePara {
+    text-align: justify;
+}
+
+/* Styling contact page */
+#mainContactDiv li {
+    text-align: left;
+    margin-left: 35%;
+}
+
+#formContact {
+    width: 60%;
+    text-align: right;
+    margin-left: 5%;
+}
+
+#alternate {
+    text-decoration: underline;
+}
+
+/* Styling Footer section */
+footer {
+    text-align: center;
+    background-color: #F5FDB0;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
