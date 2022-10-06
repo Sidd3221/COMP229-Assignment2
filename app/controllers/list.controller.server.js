@@ -38,8 +38,11 @@ export function displayUpdatePage(req, res, next) {
             res.end(err);
         }
 
-        console.log(`Now editing details for ${login.displayName}`);
-        res.render('template', { title: 'Update Info', page: 'update', login: login, displayName: UserDisplayName(req) });
+        else {
+            console.log(`Now editing details for ${login.displayName}`);
+            res.render('template', { title: 'Update Info', page: 'update', login: login, displayName: UserDisplayName(req) });
+        }
+
     });
 };
 
@@ -59,9 +62,12 @@ export function processUpdatePage(req, res, next){
         if(err){
             console.error(err);
             res.end(err);
-        };
+        }
 
-        res.redirect('/list');
+        else {
+            res.redirect('/list');  
+        }
+        
     } )
 }
 
@@ -74,6 +80,10 @@ export function deleteLogin(req, res, next){
             res.end(err);
         }
 
-        res.redirect('/list');
+        else{
+            res.redirect('/list');
+        }
+
+        
     })
 }
