@@ -16,6 +16,7 @@ import Login from '../models/logins.js';
 
 export function displayBusinessContactsList(req, res, next){
     if(!req.user){
+        req.flash('loginMessage', 'You must login first!');
         return res.render('template', {title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: UserDisplayName(req) });
     }
 
