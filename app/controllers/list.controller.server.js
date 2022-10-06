@@ -43,7 +43,10 @@ export function displayUpdatePage(req, res, next) {
             res.end(err);
         }
 
-        console.log(logins);
+        for(let i = 0; i < logins.length; i++){
+            var a = logins[i].email;
+            console.log(a);
+        }
     })
 
     loginModel.findById(id, (err, login) => {
