@@ -1,25 +1,23 @@
 <div id="updateDiv">
     <form id="updateForm" method="POST">
         <input type="hidden" name="id" value="<%= login._id %>" >
-        <label>First Name:</label>
-        <input class="form-control" type="text" name="firstName" id="firstName" placeholder="First Name" required>
-        <label>Last Name:</label>
-        <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Last Name" required>
-
-        <label>Email:</label>
-        <input type="email" class="form-control" id="emailAddress" name="email" required value="<%= login.email %>" placeholder="Email">
-
-        <label>Phone Number:</label>
-        <input type="number" class="form-control" id="username" name="phone" required value="<%= login.phone %>" placeholder="Phone">
-
-        <label>Username:</label>
-        <input type="text" class="form-control" id="username" name="username" required value="<%= login.username %>" placeholder="Username">
-
-        <label>Password:</label>
-        <input type="text" class="form-control" id="username" name="password" required value="<%= login.password %>" placeholder="Username">
 
         <label>Display Name:</label>
-        <input type="text" class="form-control" id="username" name="displayName" required value="<%= login.displayName %>" placeholder="Username">
+        <input type="text" id="username" name="displayName" required value="<%= login.displayName %>" placeholder="Username">
+
+        <label>Email:</label>
+        <input type="email"  id="emailAddress" name="email" required value="<%= login.email %>" placeholder="Email">
+
+        <label>Phone Number:</label>
+        <input type="number" id="username" name="phone" required value="<%= login.phone %>" placeholder="Phone">
+
+        <label>Username:</label>
+        <input type="text"id="username" name="username" required value="<%= login.username %>" placeholder="Username">
+
+        <label>Password:</label>
+        <input type="text" id="username" name="password" required value="<%= login.password %>" placeholder="Username">
+
+        
 
         <button class="btn btn-primary" type="submit">
             <i class="fas fa-edit"></i> Submit</button>

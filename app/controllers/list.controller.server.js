@@ -16,12 +16,10 @@ import Login from '../models/logins.js';
 
 export function displayBusinessContactsList(req, res, next){
     if(!req.user){
-        console.log('user not logged in');
         return res.render('template', {title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: UserDisplayName(req) });
     }
 
     else if(req.user){
-        console.log('user already logged in');
         loginModel.find(function(err, logins) {
             if(err){
                 console.error(err);
@@ -37,15 +35,11 @@ export function displayBusinessContactsList(req, res, next){
 
 export function displayUpdatePage(req, res, next) {
     let id = req.params.id;
+    
     loginModel.find(function(err, logins) {
         if(err){
             console.error(err);
             res.end(err);
-        }
-
-        for(let i = 0; i < logins.length; i++){
-            var a = logins[i].email;
-            console.log(a);
         }
     })
 
@@ -55,6 +49,7 @@ export function displayUpdatePage(req, res, next) {
             res.end(err);
         }
 
+        console.log(`Now editing details for ${login.displayName}`);
         res.render('template', { title: 'Update Info', page: 'update', login: login, displayName: UserDisplayName(req) });
     });
 };
