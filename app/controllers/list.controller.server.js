@@ -2,18 +2,6 @@ import loginModel from '../models/logins.js';
 
 import { UserDisplayName } from '../utils/index.js';
 
-import express from 'express';
-
-// need passport 
-import passport from 'passport';
-
-// need to include the User Model for authentication
-import Login from '../models/logins.js';
-
-// import DisplayName Utility method
-
-
-
 export function displayBusinessContactsList(req, res, next){
     if(!req.user){
         req.flash('loginMessage', 'You must login first!');

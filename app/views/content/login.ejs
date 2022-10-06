@@ -1,4 +1,6 @@
 <div id="loginDiv">
+    <h1>Log in to your account</h1>
+    <br>
     <% if(messages.length > 0) { %>
     <div id="messageArea" class="alert alert-danger">
         <%= messages %>
@@ -8,10 +10,9 @@
         <label id="firstNameLabel">Username:</label>
         <input id="usernameInput" type="text" maxlength="20" name="username">
         <br><br>
-        <label id="lastNameLabel">Password:</label>
-        <input id="passwordInput" type="text" maxlength="20" name="password">
-
-        <button class="btn btn-primary" type="submit">
-            <i class="fas fa-edit"></i> Submit</button>
+        <label id="lastNameLabel">Password:</label>&nbsp;
+        <input id="passwordInput" type="password" maxlength="20" name="password">
+        <br><br>
+        <button class="btn btn-outline-info" type="submit">Submit</button>
     </form>
 </div>

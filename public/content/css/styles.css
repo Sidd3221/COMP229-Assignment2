@@ -11,7 +11,7 @@ body {
 /* Styling all div elements */
 #mainIntro,
 #mainContactDiv,
-#mainServices,
+#mainServices,#loginDiv,
 #projectsDiv,
 #aboutMeDiv, #mission {
     width: 50%;

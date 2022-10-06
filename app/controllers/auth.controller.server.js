@@ -37,11 +37,13 @@ export function ProcessLoginPage(req, res, next){
 }
 
 export function ProcessLogoutPage(req, res, next){
-    req.logOut(function(err){
+    req.logout(function(err){
         if(err){
             console.error(err);
             res.end(err);
         }
     });
-    res.redirect('/login');
+    
+    req.flash('logoutMessage', 'You are now logged out!')
+    res.render('template', {title: 'Logged out', page: 'logout', messageLogout: req.flash('logoutMessage'), displayName: UserDisplayName(req) });
 }
