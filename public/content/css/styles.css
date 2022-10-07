@@ -138,6 +138,10 @@ label {
     text-decoration: underline;
 }
 
+#searchForm{
+    margin-left: 55%;
+}
+
 /* Styling Footer section */
 footer {
     text-align: center;

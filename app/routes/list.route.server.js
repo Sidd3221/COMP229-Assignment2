@@ -10,6 +10,7 @@ router.post('/update/:id', AuthGuard, processUpdatePage);
 router.get('/update/:id', AuthGuard, displayUpdatePage);
 router.get('/delete/:id', AuthGuard, deleteLogin);
 router.get('/search', AuthGuard, displaySearchPage);
-router.post('/search',AuthGuard, processSearchBar);
+// router.post('/search',AuthGuard, processSearchBar);
+router.post('/list', processSearchBar);
 
 export default router;

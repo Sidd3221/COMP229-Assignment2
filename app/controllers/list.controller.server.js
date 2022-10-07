@@ -17,9 +17,7 @@ export function displayBusinessContactsList(req, res, next){
     
             res.render('template', {title: 'Business Contacts List', page: 'list', login: logins, displayName: UserDisplayName(req)});
         })
-    }
-    
-    
+    } 
 }
 
 export function displayUpdatePage(req, res, next) {
@@ -42,7 +40,6 @@ export function displayUpdatePage(req, res, next) {
             console.log(`Now editing details for ${login.displayName}`);
             res.render('template', { title: 'Update Info', page: 'update', login: login, displayName: UserDisplayName(req) });
         }
-
     });
 };
 
@@ -101,11 +98,8 @@ export function processUpdatePage(req, res, next){
         else {
             res.redirect('/list');  
         }
-        
     } )
 }
-
-
 
 export function deleteLogin(req, res, next){
     let id = req.params.id;
@@ -119,7 +113,5 @@ export function deleteLogin(req, res, next){
         else{
             res.redirect('/list');
         }
-
-        
     })
 }
