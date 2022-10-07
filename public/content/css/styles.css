@@ -9,11 +9,7 @@ body {
 }
 
 /* Styling all div elements */
-#mainIntro,
-#mainContactDiv,
-#mainServices,#loginDiv,
-#projectsDiv,
-#aboutMeDiv, #mission {
+.mainDiv, #mainServices {
     width: 50%;
     margin-left: auto;
     margin-right: auto;

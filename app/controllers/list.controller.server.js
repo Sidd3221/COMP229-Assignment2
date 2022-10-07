@@ -71,6 +71,8 @@ export function processUpdatePage(req, res, next){
     } )
 }
 
+
+
 export function deleteLogin(req, res, next){
     let id = req.params.id;
 
