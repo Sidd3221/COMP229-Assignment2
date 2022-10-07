@@ -25,7 +25,7 @@ export function displayBusinessContactsList(req, res, next){
 export function displayUpdatePage(req, res, next) {
     let id = req.params.id;
     
-    loginModel.find(function(err, logins) {
+    loginModel.findOne(function(err, logins) {
         if(err){
             console.error(err);
             res.end(err);
@@ -45,6 +45,40 @@ export function displayUpdatePage(req, res, next) {
 
     });
 };
+
+export function displaySearchPage(req, res, next){
+    const searchMessage = "";
+    res.render('template', { title: 'Search', page: 'search', result: {}, searchMessage: searchMessage, displayName: UserDisplayName(req)});
+}
+
+export function processSearchBar(req, res, next) {
+    var news1 = [];
+    var searchMessage = "";
+    loginModel.find(function (err, result) {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+
+        for (var i = 0; i < result.length; i++) {
+            if (Number(req.body.use) == result[i].phone) {
+                news1.push(result[i]);
+                if(news1.length > 1){
+                    searchMessage = `Found ${news1.length} results matching your query!`;
+                }
+
+                else if(news1.length === 1){
+                    searchMessage = `Found 1 result matching your query!`;
+                } 
+            }
+
+            if(news1.length === 0){
+                searchMessage = "Found no results matching your query. Please try again!";
+            }
+        }
+        res.render('template', { title: 'Search', page: 'search', result: news1, searchMessage: searchMessage, displayName: UserDisplayName(req)});
+    })    
+}
 
 export function processUpdatePage(req, res, next){
     let id = req.params.id;
