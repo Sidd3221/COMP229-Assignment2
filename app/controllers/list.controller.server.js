@@ -51,6 +51,7 @@ export function displaySearchPage(req, res, next){
 export function processSearchBar(req, res, next) {
     var news1 = [];
     var searchMessage = "";
+    // var string = req.body.use;
     loginModel.find(function (err, result) {
         if (err) {
             console.error(err);
@@ -58,7 +59,7 @@ export function processSearchBar(req, res, next) {
         }
 
         for (var i = 0; i < result.length; i++) {
-            if (Number(req.body.use) == result[i].phone) {
+            if (Number(req.body.use.trim()) == result[i].phone) {
                 news1.push(result[i]);
                 if(news1.length > 1){
                     searchMessage = `Found ${news1.length} results matching your query!`;

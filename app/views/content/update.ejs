@@ -1,24 +1,21 @@
-<div id="updateDiv">
+<div class="mainDiv">
     <h1>Now editing details for  <%= login.displayName %> </h1>
-
-    <form id="updateForm" method="POST">
-        <input type="hidden" name="id" value="<%= login._id %>" >
-        <label>Display Name:</label>
-        <input type="text" id="username" name="displayName" required value="<%= login.displayName %>" placeholder="Username">
-        <br><br>
-        <label>Email:</label>
-        <input type="email"  id="emailAddress" name="email" required value="<%= login.email %>" placeholder="Email">
-        <br><br>
-        <label>Phone Number:</label>
-        <input type="number" id="username" name="phone" required value="<%= login.phone %>" placeholder="Phone">
-        <br><br>
-        <button class="btn btn-primary" type="submit">
-            <i class="fas fa-edit"></i> Submit</button>
-
-        <a href="/delete" class="btn btn-danger">
-            <i class="fas fa-undo"></i> Delete user</a>
-
-        <a href="/list" class="btn btn-warning">
-            <i class="fas fa-undo"></i> Cancel update</a>
-    </form>
+    <br>
+    <div id="formUpdate">
+        <form id="updateForm" method="POST">
+            <input type="hidden" name="id" value="<%= login._id %>" >
+            <label>Display Name:</label>
+            <input type="text" id="username" name="displayName" required value="<%= login.displayName %>" placeholder="Username">
+            <br><br>
+            <label>Email:</label>
+            <input type="email"  id="emailAddress" name="email" required value="<%= login.email %>" placeholder="Email">
+            <br><br>
+            <label>Phone Number:</label>
+            <input type="number" id="username" name="phone" required value="<%= login.phone %>" placeholder="Phone">
+            <br><br>
+            <button class="btn btn-outline-info" type="submit">Submit</button>
+            <a href="/delete" class="btn btn-outline-danger"> Delete user</a>
+            <a href="/list" class="btn btn-outline-warning">Cancel update</a>
+        </form>
+    </div>
 </div>

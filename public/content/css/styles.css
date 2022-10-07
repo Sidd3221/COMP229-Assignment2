@@ -128,7 +128,7 @@ label {
     margin-left: 35%;
 }
 
-#formContact {
+#formContact, #formUpdate {
     width: 60%;
     text-align: right;
     margin-left: 5%;
