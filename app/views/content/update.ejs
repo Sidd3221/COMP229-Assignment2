@@ -20,7 +20,7 @@ Date: October 1, 2022 -->
             <input type="number" id="username" name="phone" required value="<%= login.phone %>" placeholder="Phone">
             <br><br>
             <button class="btn btn-outline-info" type="submit">Submit</button>
-            <a href="/delete" class="btn btn-outline-danger"> Delete user</a>
+            <a href="/delete/<%= login._id %>" class="btn btn-outline-danger"> Delete user</a>
             <a href="/list" class="btn btn-outline-warning">Cancel update</a>
         </form>
     </div>
