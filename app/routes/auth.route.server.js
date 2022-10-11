@@ -5,18 +5,19 @@
 
 
 import { Router } from 'express';
-import { DisplayLoginPage,  ProcessLoginPage, ProcessLogoutPage} from '../controllers/auth.controller.server.js';
+import { displayLoginPage,  processLoginPage, processLogoutPage} from '../controllers/auth.controller.server.js';
 
 const router = Router();
 
 // Display Login Page
-router.get('/login', DisplayLoginPage);
+router.get('/login', displayLoginPage);
+
 // Process Login Page
-router.post('/login', ProcessLoginPage);
-router.post('/list',ProcessLoginPage);
+router.post('/login', processLoginPage);
+// router.post('/list',processLoginPage);
 
 // Process Logout Page
-router.get('/logout', ProcessLogoutPage);
+router.get('/logout', processLogoutPage);
 
 
 export default router;

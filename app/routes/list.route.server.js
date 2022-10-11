@@ -18,6 +18,6 @@ router.get('/update/:id', AuthGuard, displayUpdatePage);
 router.get('/delete/:id', AuthGuard, deleteLogin);
 
 router.get('/search', AuthGuard, displaySearchPage);
-router.post('/list', processSearchBar);
+router.post('/list', AuthGuard, processSearchBar);
 
 export default router;

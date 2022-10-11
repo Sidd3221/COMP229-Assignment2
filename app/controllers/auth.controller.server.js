@@ -8,7 +8,7 @@ import passport from 'passport';
 import { UserDisplayName } from '../utils/index.js';
 
 // Rendering login page if user is not already logged in 
-export function DisplayLoginPage(req, res, next){
+export function displayLoginPage(req, res, next){
     if(!req.user){
         res.render('template', {title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: UserDisplayName(req) });
     }
@@ -19,7 +19,7 @@ export function DisplayLoginPage(req, res, next){
 }
 
 // Processing login page
-export function ProcessLoginPage(req, res, next){
+export function processLoginPage(req, res, next){
     passport.authenticate('local', function(err, user, info) {
         if(err){
             console.error(err);
@@ -45,7 +45,7 @@ export function ProcessLoginPage(req, res, next){
 }
 
 // Processing log out and rendering the log out page
-export function ProcessLogoutPage(req, res, next){
+export function processLogoutPage(req, res, next){
     req.logout(function(err){
         if(err){
             console.error(err);

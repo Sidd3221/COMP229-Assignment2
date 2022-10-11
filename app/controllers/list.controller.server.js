@@ -13,7 +13,7 @@ import { UserDisplayName } from '../utils/index.js';
 export function displayBusinessContactsList(req, res, next){
     if(!req.user){
         req.flash('loginMessage', 'You must login first!');
-        return res.render('template', {title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: UserDisplayName(req) });
+        res.redirect('/login');
     }
 
     else if(req.user){
@@ -60,9 +60,8 @@ export function displaySearchPage(req, res, next){
 
 // Processing search request
 export function processSearchBar(req, res, next) {
-    var news1 = [];
+    var queryArray = [];
     var searchMessage = "";
-    // var string = req.body.use;
     loginModel.find(function (err, result) {
         if (err) {
             console.error(err);
@@ -71,21 +70,21 @@ export function processSearchBar(req, res, next) {
 
         for (var i = 0; i < result.length; i++) {
             if (Number(req.body.use.trim()) == result[i].phone) {
-                news1.push(result[i]);
-                if(news1.length > 1){
-                    searchMessage = `Found ${news1.length} results matching your query!`;
+                queryArray.push(result[i]);
+                if(queryArray.length > 1){
+                    searchMessage = `Found ${queryArray.length} results matching your query!`;
                 }
 
-                else if(news1.length === 1){
+                else if(queryArray.length === 1){
                     searchMessage = `Found 1 result matching your query!`;
                 } 
             }
 
-            if(news1.length === 0){
+            if(queryArray.length === 0){
                 searchMessage = "Found no results matching your query. Please try again!";
             }
         }
-        res.render('template', { title: 'Search', page: 'search', result: news1, searchMessage: searchMessage, displayName: UserDisplayName(req)});
+        res.render('template', { title: 'Search', page: 'search', result: queryArray, searchMessage: searchMessage, displayName: UserDisplayName(req)});
     })    
 }
 
