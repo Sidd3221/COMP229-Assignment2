@@ -1,3 +1,8 @@
+// Filename: logins.js
+// Student Name: Siddharth Verma
+// Student ID: 301207026
+// Date: October 1, 2022
+
 import mongoose from 'mongoose';
 import passportLocalMongoose from 'passport-local-mongoose';
 const { PassportLocalSchema } = mongoose;

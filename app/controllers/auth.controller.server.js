@@ -1,6 +1,13 @@
+// Filename: auth.controller.server.js
+// Student Name: Siddharth Verma
+// Student ID: 301207026
+// Date: October 1, 2022
+
+// Importing passport and function that displays user name
 import passport from 'passport';
 import { UserDisplayName } from '../utils/index.js';
 
+// Rendering login page if user is not already logged in 
 export function DisplayLoginPage(req, res, next){
     if(!req.user){
         res.render('template', {title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: UserDisplayName(req) });
@@ -11,6 +18,7 @@ export function DisplayLoginPage(req, res, next){
     } 
 }
 
+// Processing login page
 export function ProcessLoginPage(req, res, next){
     passport.authenticate('local', function(err, user, info) {
         if(err){
@@ -36,6 +44,7 @@ export function ProcessLoginPage(req, res, next){
     })(req, res, next);
 }
 
+// Processing log out and rendering the log out page
 export function ProcessLogoutPage(req, res, next){
     req.logout(function(err){
         if(err){

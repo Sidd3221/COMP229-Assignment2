@@ -1,7 +1,7 @@
 // Filename: index.route.server.js
 // Student Name: Siddharth Verma
 // Student ID: 301207026
-// Date: Sep 19, 2022
+// Date: October 1, 2022
 
 // Importing router from express and the functions that render the website pages.
 

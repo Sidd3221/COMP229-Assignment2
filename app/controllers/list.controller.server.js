@@ -1,7 +1,15 @@
+// Filename: list.controller.server.js
+// Student Name: Siddharth Verma
+// Student ID: 301207026
+// Date: October 1, 2022
+
+// Importing login schema 
 import loginModel from '../models/logins.js';
 
+// importing function that displays user's display name when logged in
 import { UserDisplayName } from '../utils/index.js';
 
+// Rendering contact list if user is logged in
 export function displayBusinessContactsList(req, res, next){
     if(!req.user){
         req.flash('loginMessage', 'You must login first!');
@@ -20,6 +28,7 @@ export function displayBusinessContactsList(req, res, next){
     } 
 }
 
+// Rendering update page
 export function displayUpdatePage(req, res, next) {
     let id = req.params.id;
     
@@ -43,11 +52,13 @@ export function displayUpdatePage(req, res, next) {
     });
 };
 
+// Rendering search page
 export function displaySearchPage(req, res, next){
     const searchMessage = "";
     res.render('template', { title: 'Search', page: 'search', result: {}, searchMessage: searchMessage, displayName: UserDisplayName(req)});
 }
 
+// Processing search request
 export function processSearchBar(req, res, next) {
     var news1 = [];
     var searchMessage = "";
@@ -78,6 +89,7 @@ export function processSearchBar(req, res, next) {
     })    
 }
 
+// Processing update request
 export function processUpdatePage(req, res, next){
     let id = req.params.id;
     

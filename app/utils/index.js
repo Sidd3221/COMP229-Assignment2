@@ -1,3 +1,9 @@
+// Filename: index.js
+// Student Name: Siddharth Verma
+// Student ID: 301207026
+// Date: October 1, 2022
+
+
 export function UserDisplayName(req) {
     if(req.user){
         return req.user.displayName;

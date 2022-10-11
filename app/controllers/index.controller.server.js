@@ -1,8 +1,9 @@
 // Filename: index.controller.server.js
 // Student Name: Siddharth Verma
 // Student ID: 301207026
-// Date: Sep 19, 2022
+// Date: October 1, 2022
 
+// importing function that displays user's display name when logged in
 import { UserDisplayName } from '../utils/index.js';
 
 // Rendering home page

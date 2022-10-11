@@ -1,39 +1,28 @@
 // Filename: server.js
 // Student Name: Siddharth Verma
 // Student ID: 301207026
-// Date: Sep 19, 2022
+// Date: October 1, 2022
 
-//Importing modules
+//Importing express and passport modules
 import cookieParser from "cookie-parser";
 import express from "express";
 import logger from "morgan";
 import session from "express-session";
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
-
-
+import passport from 'passport';
+import passportLocal from 'passport-local';
+import flash from 'connect-flash';
+import Login from './app/models/logins.js';
+import mongoose from 'mongoose';
+import { MongoURI, Secret } from './config/config.js';
 
 // Declaring constants
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-
-// Auth Step 1 - import modules
-import passport from 'passport';
-import passportLocal from 'passport-local';
-import flash from 'connect-flash';
-
-// Auth Step 2 - defien our auth strategy
 let localStrategy = passportLocal.Strategy;
 
-// Auth Step 3 - import the user model
-import Login from './app/models/logins.js';
-
-// Import Mongoose Module
-import mongoose from 'mongoose';
-
-// Configuration Module
-import { MongoURI, Secret } from './config/config.js';
-
+// Importing relevant routers
 import indexRouter from './app/routes/index.route.server.js'
 import listRouter from './app/routes/list.route.server.js';
 import authRouter from './app/routes/auth.route.server.js';
@@ -43,11 +32,10 @@ const app = express();
 mongoose.connect(MongoURI);
 const db = mongoose.connection;
 
-//Listen for connection success or error
 db.on('open', () => console.log("Connected to MongoDB"));
 db.on('error', () => console.log("Mongo Connection Error"));
 
-//Setting view engine and using modules 
+// Setting and requiring all modules to be used
 app.set('views', path.join(__dirname, '/app/views'));
 app.set('view engine', 'ejs');
 app.use(cookieParser());
@@ -63,16 +51,14 @@ app.use(session({
 
 app.use(flash());
 
-// Auth Step 6 - Initialize Passport and Session
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(Login.createStrategy());
 
-// Auth Step 8 - Setup serialization and deserialization
 passport.serializeUser(Login.serializeUser());
 passport.deserializeUser(Login.deserializeUser());
 
-//Using the router that was exported from index.route.server.js
+// Using the router that was exported from index.route.server.js
 app.use('/', indexRouter);
 app.use('/', listRouter);
 app.use('/', authRouter);
