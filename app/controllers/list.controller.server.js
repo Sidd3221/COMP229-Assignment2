@@ -11,6 +11,9 @@ import { UserDisplayName } from '../utils/index.js';
 
 // Rendering contact list if user is logged in
 export function displayBusinessContactsList(req, res, next){
+    var searched = false;
+    var queryArray = [];
+    const searchMessage = "";
     if(!req.user){
         req.flash('loginMessage', 'You must login first!');
         res.redirect('/login');
@@ -23,7 +26,7 @@ export function displayBusinessContactsList(req, res, next){
                 res.end(err);
             }
     
-            res.render('template', {title: 'Business Contacts List', page: 'list', login: logins, displayName: UserDisplayName(req)});
+            res.render('template', {title: 'Business Contacts List', page: 'list', login: logins, searched: searched, result: queryArray, searchMessage: searchMessage, displayName: UserDisplayName(req)});
         })
     } 
 }
@@ -52,17 +55,12 @@ export function displayUpdatePage(req, res, next) {
     });
 };
 
-// Rendering search page
-export function displaySearchPage(req, res, next){
-    const searchMessage = "";
-    res.render('template', { title: 'Search', page: 'search', result: {}, searchMessage: searchMessage, displayName: UserDisplayName(req)});
-}
-
 // Processing search request
-export function processSearchBar(req, res, next) {
+export function processSearchRequest(req, res, next) {
     var queryArray = [];
     var searchMessage = "";
-    loginModel.find(function (err, result) {
+    var searched = false;
+    loginModel.find(function (err, result, logins) {
         if (err) {
             console.error(err);
             res.end(err);
@@ -83,9 +81,12 @@ export function processSearchBar(req, res, next) {
             if(queryArray.length === 0){
                 searchMessage = "Found no results matching your query. Please try again!";
             }
+            searched = true;
         }
-        res.render('template', { title: 'Search', page: 'search', result: queryArray, searchMessage: searchMessage, displayName: UserDisplayName(req)});
-    })    
+        res.render('template', {title: 'Business Contacts List', page: 'list', login: logins, searched: searched, result: queryArray, searchMessage: searchMessage, displayName: UserDisplayName(req)});
+    }) 
+    
+    searched = false;
 }
 
 // Processing update request

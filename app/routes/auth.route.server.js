@@ -14,10 +14,8 @@ router.get('/login', displayLoginPage);
 
 // Process Login Page
 router.post('/login', processLoginPage);
-// router.post('/list',processLoginPage);
 
 // Process Logout Page
 router.get('/logout', processLogoutPage);
-
 
 export default router;

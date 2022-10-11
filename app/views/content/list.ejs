@@ -6,8 +6,19 @@ Date: Date: October 1, 2022 -->
 
 <!-- Rendering business contact list -->
 <div class="mainDiv">
+    <% if(searchMessage === "Found no results matching your query. Please try again!") { %>
+    <div class="alert alert-danger">
+        <%= searchMessage %>
+    </div>
+    <% } else if(searchMessage !== "") { %>
+    <div class="alert alert-success">
+        <%= searchMessage %>
+    </div>
+    <% } %>
     <h1 id="greeting">
-        <% if(displayName) { %>
+        <% if(displayName && searched) { %>
+        Search Results
+        <% } else{ %>
         <%= displayName %>'s Business Contact List
         <% } %>
     </h1>
@@ -33,6 +44,35 @@ Date: Date: October 1, 2022 -->
                     </tr>
                 </thead>
                 <tbody id="loginList">
+                    <% if (searched) { %>
+                    <% for(let i=0; i < result.length; i++) { %>
+                    <tr>
+                        <th class="text-center">
+                            <%= i + 1 %>
+                        </th>
+                        <td>
+                            <%= result[i].displayName %>
+                        </td>
+                        <td>
+                            <%= result[i].phone %>
+                        </td>
+                        <td>
+                            <%= result[i].email %>
+                        </td>
+
+                        <% if(displayName) { %>
+                        <td class="text-center col-1">
+                            <a href="/update/<%= result[i]._id %>" class="btn btn-primary btn-sm">
+                                <i class="fas fa-pencil-alt"></i> Edit</a>
+                        </td>
+                        <td class="text-center col-1">
+                            <a href="/delete/<%= result[i]._id %>" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash-alt"></i> Delete</a>
+                        </td>
+                        <% } %>
+                    </tr>
+                    <% } %>
+                    <% } else if(!searched) { %>
                     <% for(let i=0; i < login.length; i++) { %>
                     <tr>
                         <th class="text-center">
@@ -60,6 +100,7 @@ Date: Date: October 1, 2022 -->
                         <% } %>
                     </tr>
                     <% } %>
+                    <%  } %>
                 </tbody>
             </table>
         </div>
