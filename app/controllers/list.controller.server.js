@@ -25,7 +25,8 @@ export function displayBusinessContactsList(req, res, next){
                 console.error(err);
                 res.end(err);
             }
-    
+            logins.sort((a, b) => a.displayName.localeCompare(b.displayName))
+            // logins.sort(sortAlphabetically);
             res.render('template', {title: 'Business Contacts List', page: 'list', login: logins, searched: searched, result: queryArray, searchMessage: searchMessage, displayName: UserDisplayName(req)});
         })
     } 
@@ -82,12 +83,33 @@ export function processSearchRequest(req, res, next) {
                 searchMessage = "Found no results matching your query. Please try again!";
             }
             searched = true;
+
         }
+        queryArray.sort((a, b) => a.displayName.localeCompare(b.displayName));
+        // queryArray.sort(sortAlphabetically);
         res.render('template', {title: 'Business Contacts List', page: 'list', login: logins, searched: searched, result: queryArray, searchMessage: searchMessage, displayName: UserDisplayName(req)});
     }) 
     
     searched = false;
 }
+
+// function sortAlphabetically(firstObject, secondObject) {
+//     var returnValue = 0;
+    
+//     if (firstObject.displayName < secondObject.displayName) {
+//         returnValue = -1;
+//     } 
+    
+//     else if (firstObject.displayName > secondObject.displayName) {
+//         returnValue = 1;
+//     } 
+    
+//     else {
+//         returnValue = 0;
+//     }
+
+//     return returnValue;
+// }
 
 // Processing update request
 export function processUpdatePage(req, res, next){
