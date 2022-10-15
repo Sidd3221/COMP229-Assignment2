@@ -25,7 +25,9 @@ export function displayContactList(req, res, next){
                 console.error(err);
                 res.end(err);
             }
-            logins.sort((a, b) => a.displayName.localeCompare(b.displayName))
+            
+            //Localecompare code below sourced from https://stackoverflow.com/questions/6712034/sort-array-by-firstname-alphabetically-in-javascript
+            logins.sort((firstObject, secondObject) => firstObject.displayName.localeCompare(secondObject.displayName))
             res.render('template', {title: 'Business Contacts List', page: 'list', login: logins, searched: searched, result: queryArray, searchMessage: searchMessage, displayName: displayUserName(req)});
         })
     } 
@@ -84,7 +86,9 @@ export function processSearchRequest(req, res, next) {
             searched = true;
 
         }
-        queryArray.sort((a, b) => a.displayName.localeCompare(b.displayName));
+        
+        //Localecompare code below sourced from https://stackoverflow.com/questions/6712034/sort-array-by-firstname-alphabetically-in-javascript
+        queryArray.sort((firstObject, secondObject) => firstObject.displayName.localeCompare(secondObject.displayName))
         res.render('template', {title: 'Business Contacts List', page: 'list', login: logins, searched: searched, result: queryArray, searchMessage: searchMessage, displayName: displayUserName(req)});
     }) 
     
