@@ -12,6 +12,8 @@ const router = Router();
 
 // Defining the routes and get/post requests to display the contacts list and handle the user's requests if they want to delete, search or update an entry in the list.
 router.get('/list', displayContactList);
+router.get('/update', AuthGuard, displayContactList);
+router.get('/delete', AuthGuard, displayContactList);
 router.post('/update/:id', AuthGuard, processUpdateRequest);
 router.get('/update/:id', AuthGuard, displayUpdatePage);
 router.get('/delete/:id', AuthGuard, processDeleteRequest);
