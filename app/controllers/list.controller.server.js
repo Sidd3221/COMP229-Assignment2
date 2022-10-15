@@ -6,13 +6,13 @@
 // Importing login schema 
 import loginModel from '../models/logins.js';
 
-// importing function that displays user's display name when logged in
-import { UserDisplayName } from '../utils/index.js';
+// Importing function that displays user's display name when logged in
+import { displayUserName } from '../utils/index.js';
 
 // Rendering contact list if user is logged in
-export function displayBusinessContactsList(req, res, next){
-    var searched = false;
-    var queryArray = [];
+export function displayContactList(req, res, next){
+    let searched = false;
+    let queryArray = [];
     const searchMessage = "";
     if(!req.user){
         req.flash('loginMessage', 'You must login first!');
@@ -26,8 +26,7 @@ export function displayBusinessContactsList(req, res, next){
                 res.end(err);
             }
             logins.sort((a, b) => a.displayName.localeCompare(b.displayName))
-            // logins.sort(sortAlphabetically);
-            res.render('template', {title: 'Business Contacts List', page: 'list', login: logins, searched: searched, result: queryArray, searchMessage: searchMessage, displayName: UserDisplayName(req)});
+            res.render('template', {title: 'Business Contacts List', page: 'list', login: logins, searched: searched, result: queryArray, searchMessage: searchMessage, displayName: displayUserName(req)});
         })
     } 
 }
@@ -51,23 +50,23 @@ export function displayUpdatePage(req, res, next) {
 
         else {
             console.log(`Now editing details for ${login.displayName}`);
-            res.render('template', { title: 'Update Info', page: 'update', login: login, displayName: UserDisplayName(req) });
+            res.render('template', { title: 'Update Info', page: 'update', login: login, displayName: displayUserName(req) });
         }
     });
 };
 
 // Processing search request
 export function processSearchRequest(req, res, next) {
-    var queryArray = [];
-    var searchMessage = "";
-    var searched = false;
+    let queryArray = [];
+    let searchMessage = "";
+    let searched = false;
     loginModel.find(function (err, result, logins) {
         if (err) {
             console.error(err);
             res.end(err);
         }
 
-        for (var i = 0; i < result.length; i++) {
+        for (let i = 0; i < result.length; i++) {
             if (Number(req.body.use.trim()) == result[i].phone) {
                 queryArray.push(result[i]);
                 if(queryArray.length > 1){
@@ -86,33 +85,14 @@ export function processSearchRequest(req, res, next) {
 
         }
         queryArray.sort((a, b) => a.displayName.localeCompare(b.displayName));
-        // queryArray.sort(sortAlphabetically);
-        res.render('template', {title: 'Business Contacts List', page: 'list', login: logins, searched: searched, result: queryArray, searchMessage: searchMessage, displayName: UserDisplayName(req)});
+        res.render('template', {title: 'Business Contacts List', page: 'list', login: logins, searched: searched, result: queryArray, searchMessage: searchMessage, displayName: displayUserName(req)});
     }) 
     
     searched = false;
 }
 
-// function sortAlphabetically(firstObject, secondObject) {
-//     var returnValue = 0;
-    
-//     if (firstObject.displayName < secondObject.displayName) {
-//         returnValue = -1;
-//     } 
-    
-//     else if (firstObject.displayName > secondObject.displayName) {
-//         returnValue = 1;
-//     } 
-    
-//     else {
-//         returnValue = 0;
-//     }
-
-//     return returnValue;
-// }
-
 // Processing update request
-export function processUpdatePage(req, res, next){
+export function processUpdateRequest(req, res, next){
     let id = req.params.id;
     
     let updatedLogin = loginModel({
@@ -136,7 +116,7 @@ export function processUpdatePage(req, res, next){
     } )
 }
 
-export function deleteLogin(req, res, next){
+export function processDeleteRequest(req, res, next){
     let id = req.params.id;
 
     loginModel.remove({_id: id}, (err) => {

@@ -4,7 +4,6 @@
 // Date: October 1, 2022
 
 // Importing router from express and the functions that render the website pages.
-
 import { Router } from "express";
 import { homePage, aboutPage, servicesPage, contactPage, projectsPage } from "../controllers/index.controller.server.js";
 

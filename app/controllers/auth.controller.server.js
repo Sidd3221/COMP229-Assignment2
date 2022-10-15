@@ -5,12 +5,12 @@
 
 // Importing passport and function that displays user name
 import passport from 'passport';
-import { UserDisplayName } from '../utils/index.js';
+import { displayUserName } from '../utils/index.js';
 
 // Rendering login page if user is not already logged in 
 export function displayLoginPage(req, res, next){
     if(!req.user){
-        res.render('template', {title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: UserDisplayName(req) });
+        res.render('template', {title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: displayUserName(req) });
     }
 
     else{
@@ -18,8 +18,8 @@ export function displayLoginPage(req, res, next){
     } 
 }
 
-// Processing login page
-export function processLoginPage(req, res, next){
+// Processing user's login request
+export function processLoginRequest(req, res, next){
     passport.authenticate('local', function(err, user, info) {
         if(err){
             console.error(err);
@@ -44,8 +44,8 @@ export function processLoginPage(req, res, next){
     })(req, res, next);
 }
 
-// Processing log out and rendering the log out page
-export function processLogoutPage(req, res, next){
+// Processing user's log out request and then rendering the log out page
+export function processLogoutRequest(req, res, next){
     req.logout(function(err){
         if(err){
             console.error(err);
@@ -54,5 +54,5 @@ export function processLogoutPage(req, res, next){
     });
     
     req.flash('logoutMessage', 'You are now logged out!')
-    res.render('template', {title: 'Logged out', page: 'logout', messageLogout: req.flash('logoutMessage'), displayName: UserDisplayName(req) });
+    res.render('template', {title: 'Logged out', page: 'logout', messageLogout: req.flash('logoutMessage'), displayName: displayUserName(req) });
 }

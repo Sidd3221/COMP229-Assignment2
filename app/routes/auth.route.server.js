@@ -3,19 +3,16 @@
 // Student ID: 301207026
 // Date: October 1, 2022
 
-
+// Importing router from express and the functions that render the website pages.
 import { Router } from 'express';
-import { displayLoginPage,  processLoginPage, processLogoutPage} from '../controllers/auth.controller.server.js';
+import { displayLoginPage,  processLoginRequest, processLogoutRequest} from '../controllers/auth.controller.server.js';
 
 const router = Router();
 
-// Display Login Page
+// Defining the routes and get/post requests to handle the user's login and logout requests
 router.get('/login', displayLoginPage);
+router.post('/login', processLoginRequest);
+router.get('/logout', processLogoutRequest);
 
-// Process Login Page
-router.post('/login', processLoginPage);
-
-// Process Logout Page
-router.get('/logout', processLogoutPage);
-
+// Exporting router
 export default router;
